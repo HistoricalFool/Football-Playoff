@@ -42,4 +42,4 @@ for C in Country:
 
             
         df_data=pd.DataFrame(smaller)
-        df_data.to_excel("Austria_playoff.xlsx", index=False)
+        df_data.to_excel("~/Football-Playoff/Data/Austria_playoff.xlsx", index=False)
