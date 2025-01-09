@@ -42,4 +42,4 @@ for C in Country:
         df_data=pd.DataFrame(smaller)
     
         
-        df_data.to_csv('aut-att-rs.csv', index=False)
+        df_data.to_csv('~/Football-Playoff/Data/aut-att-rs.csv', index=False)
