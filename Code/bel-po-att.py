@@ -10,32 +10,34 @@ driver = webdriver.Firefox()
 
 
 smaller = []
-Country = ["bel-jupiler-league"]
-Year = np.arange(2009, 2018)
+Country = ["bel-eerste-klasse-a"]
+Year = np.arange(2017, 2023)
 
 
 for C in Country:
     for y in Year:
-        driver.get("https://www.worldfootball.net/attendance/bel-jupiler-league-"+str(y)+"-"+str(y+1)+"-playoff-i/1/")
+        if y < 2019:
+            website = "https://www.worldfootball.net/attendance/bel-eerste-klasse-a-"+str(y)+"-"+str(y+1)+"-playoff-i/1/"
+        else:
+            website = "https://www.worldfootball.net/attendance/bel-eerste-klasse-a-"+str(y)+"-"+str(y+1)+"-championship/1/"
+
+        driver.get(website)
         
         Rank = driver.find_elements(By.CSS_SELECTOR,"#site > div.white > div.content > div.portfolio > div.box > div > table > tbody > tr > td:nth-child(1)")
         Club = driver.find_elements(By.CSS_SELECTOR,"#site > div.white > div.content > div.portfolio > div.box > div > table > tbody > tr > td:nth-child(3)")
         Total = driver.find_elements(By.CSS_SELECTOR,"#site > div.white > div.content > div.portfolio > div.box > div > table > tbody > tr > td:nth-child(4)")
         Matches = driver.find_elements(By.CSS_SELECTOR,"#site > div.white > div.content > div.portfolio > div.box > div > table > tbody > tr > td:nth-child(5)")
         Average = driver.find_elements(By.CSS_SELECTOR,"#site > div.white > div.content > div.portfolio > div.box > div > table > tbody > tr > td:nth-child(6)")
-        Year = driver.find_elements(By.XPATH,"/html/body/div[3]/div[2]/div[2]/div[3]/h1")
         for i in range(len(Rank)):
-            
-            print(Total[i].text)
-            temporary_data={'Rank': Rank[i].text,
-                            'Club': Club[i].text,
-                            'Total': Total[i].text,
-                            'Matches': Matches[i].text,
-                            'Average': Average[i].text,
-                            'Year': y}
+            temporary_data = {
+            'Rank': Rank[i].text,
+            'Club': Club[i].text,
+            'Total': Total[i].text,
+            'Matches': Matches[i].text,
+            'Average': Average[i].text,
+            'Year': y
+            }
             smaller.append(temporary_data)
-        
-        
         
     
 
