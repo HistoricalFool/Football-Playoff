@@ -11,7 +11,7 @@ import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-driver = webdriver.Chrome('/Users/alexanderfrei/Downloads/chromedriver')
+driver = webdriver.Firefox()
 
 smaller = []
 Country = ["aut-bundesliga"]
